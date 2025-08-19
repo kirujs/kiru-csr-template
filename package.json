@@ -13,10 +13,10 @@
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.12",
     "typescript": "^5.9.2",
-    "vite": "^7.1.2",
-    "vite-plugin-kiru": "file:C:/repos/kiru/packages/vite-plugin-kiru"
+    "vite": "^7.1.2"
   },
   "dependencies": {
-    "kiru": "file:C:/repos/kiru/packages/lib"
+    "kiru": "^0.46.0",
+    "vite-plugin-kiru": "^0.25.0"
   }
 }
