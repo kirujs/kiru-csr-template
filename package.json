@@ -17,6 +17,6 @@
     "vite-plugin-kiru": "^0.26.0"
   },
   "dependencies": {
-    "kiru": "^0.48.2"
+    "kiru": "^0.48.3"
   }
 }
