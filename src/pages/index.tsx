@@ -1,6 +1,6 @@
 import { useRef, useSignal } from "kiru"
 
-export function Counter() {
+export default function Page() {
   const count = useSignal(0)
   const countRef = useRef<HTMLDivElement>(null)
   const animRef = useRef<Animation>()
