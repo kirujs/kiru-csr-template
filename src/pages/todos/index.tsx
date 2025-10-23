@@ -1,4 +1,5 @@
 import { Derive, signal, useComputed, useSignal } from "kiru"
+import { className as cls } from "kiru/utils"
 
 interface Todo {
   id: number
@@ -43,32 +44,41 @@ export default function TodosPage() {
           </button>
         </div>
       </form>
-      <Derive from={todos}>
-        {(todos) => (
-          <ul className="text-xl">
-            {todos.length === 0 && <i>No todos</i>}
-            {todos.map((todo) => (
-              <TodoItem key={todo.id} todo={todo} />
-            ))}
-          </ul>
-        )}
-      </Derive>
+      <div>
+        <Derive from={todos}>
+          {(todos) => (
+            <ul className="text-xl flex flex-col gap-2">
+              {todos.length === 0 && <i>No todos</i>}
+              {todos.map((todo) => (
+                <TodoItem key={todo.id} todo={todo} />
+              ))}
+            </ul>
+          )}
+        </Derive>
+      </div>
     </div>
   )
 }
 
 function TodoItem({ todo }: { todo: Todo }) {
   return (
-    <li className={todo.completed ? "opacity-50" : ""}>
+    <li
+      className={cls(
+        "flex items-center gap-2 bg-neutral-50/10 rounded p-2",
+        todo.completed ? "opacity-50" : ""
+      )}
+    >
       <input
         type="text"
         value={todo.title}
         onchange={(e) => updateTodo({ ...todo, title: e.target.value })}
+        className="bg-black/30 rounded px-2 py-1"
       />
       <input
         type="checkbox"
         checked={todo.completed}
         onchange={(e) => updateTodo({ ...todo, completed: e.target.checked })}
+        className="w-6 h-6"
       />
     </li>
   )
