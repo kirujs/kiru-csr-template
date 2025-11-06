@@ -9,12 +9,12 @@ export default function RootLayout({ children }: { children: JSX.Children }) {
         Welcome to your Kiru CSR app!
       </h1>
       <div className="flex gap-4 justify-center">
-        <Link to="/" className={state.path === "/" ? "" : "underline"}>
+        <Link to="/" className={state.pathname === "/" ? "" : "underline"}>
           Home
         </Link>
         <Link
           to="/todos"
-          className={state.path === "/todos" ? "" : "underline"}
+          className={state.pathname === "/todos" ? "" : "underline"}
         >
           Todos
         </Link>
