@@ -14,9 +14,9 @@
     "tailwindcss": "^4.1.16",
     "typescript": "^5.9.3",
     "vite": "^7.2.2",
-    "vite-plugin-kiru": "^0.29.11"
+    "vite-plugin-kiru": "^0.30.0"
   },
   "dependencies": {
-    "kiru": "^0.51.7"
+    "kiru": "^0.51.8"
   }
 }
