@@ -1,4 +1,4 @@
-import { Derive, signal, useComputed, useSignal } from "kiru"
+import { Derive, signal, computed, DevTools } from "kiru"
 import { className as cls } from "kiru/utils"
 
 interface Todo {
@@ -7,16 +7,20 @@ interface Todo {
   completed: boolean
 }
 const todos = signal<Todo[]>([])
+if (import.meta.env.DEV) {
+  DevTools.track(todos, "todos")
+}
 
 function updateTodo(todo: Todo) {
   todos.value = todos.value.map((t) => (t.id === todo.id ? todo : t))
 }
 
 export default function TodosPage() {
-  const inputText = useSignal("")
-  const disableSubmit = useComputed(() => !inputText.value.trim())
+  const inputText = signal("")
+  const disableSubmit = computed(() => !inputText.value.trim())
 
-  const handleAddTodo = () => {
+  const handleAddTodo = (e: Kiru.FormEvent) => {
+    e.preventDefault()
     if (disableSubmit.value) return
     todos.value = [
       ...todos.value,
@@ -25,9 +29,9 @@ export default function TodosPage() {
     inputText.value = ""
   }
 
-  return (
+  return () => (
     <div className="flex flex-col gap-8 justify-center items-center">
-      <form onsubmit={(e) => (e.preventDefault(), handleAddTodo())}>
+      <form onsubmit={handleAddTodo}>
         <div className="flex gap-2">
           <input
             type="text"

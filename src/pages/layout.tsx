@@ -1,24 +1,12 @@
 import { Link, useFileRouter } from "kiru/router"
 
 export default function RootLayout({ children }: { children: JSX.Children }) {
-  const { state } = useFileRouter()
-
   return (
     <div className="min-h-screen flex flex-col gap-20 justify-between px-10 py-20">
       <h1 className="text-3xl md:text-4xl md:leading-normal font-bold text-center">
         Welcome to your Kiru CSR app!
       </h1>
-      <div className="flex gap-4 justify-center">
-        <Link to="/" className={state.pathname === "/" ? "" : "underline"}>
-          Home
-        </Link>
-        <Link
-          to="/todos"
-          className={state.pathname === "/todos" ? "" : "underline"}
-        >
-          Todos
-        </Link>
-      </div>
+      <Nav />
       {children}
       <div className="text-center text-stone-200">
         <p>Learn at</p>
@@ -33,6 +21,21 @@ export default function RootLayout({ children }: { children: JSX.Children }) {
           </a>
         </div>
       </div>
+    </div>
+  )
+}
+
+const Nav = () => {
+  const { state } = useFileRouter()
+  const pathname = state.pathname.value
+  return (
+    <div className="flex gap-4 justify-center">
+      <Link to="/" className={pathname === "/" ? "" : "underline"}>
+        Home
+      </Link>
+      <Link to="/todos" className={pathname === "/todos" ? "" : "underline"}>
+        Todos
+      </Link>
     </div>
   )
 }
