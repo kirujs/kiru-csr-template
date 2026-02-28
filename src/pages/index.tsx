@@ -32,7 +32,6 @@ export default function Page() {
           {count}
         </span>
       </div>
-      <p>Child</p>
     </>
   )
 }
