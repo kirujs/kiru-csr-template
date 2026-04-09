@@ -48,13 +48,11 @@ export default function TodosPage() {
           </button>
         </div>
       </form>
-      <div>
-        <ul className="text-xl flex flex-col gap-2">
-          <For each={todos} fallback={<i>No todos</i>}>
-            {(todo) => <TodoItem key={todo.id} todo={todo} />}
-          </For>
-        </ul>
-      </div>
+      <ul className="text-xl flex flex-col gap-2">
+        <For each={todos} fallback={<i>No todos</i>}>
+          {(todo) => <TodoItem key={todo.id} todo={todo} />}
+        </For>
+      </ul>
     </div>
   )
 }
